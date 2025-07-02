@@ -20,6 +20,8 @@ def func0()->None:
                         format ='%(message)s - %(filename)s - funcname: %(funcName)s - %(asctime)s - %(levelname)s')
     logging.info("This will be saved in the log file. And this is a test log message to track our work. hello from main.py. you will be able to see time, level, message and file and function name")
 
+    # you can also test and expand this function as you like :)
+
 
 if __name__ == "__main__":
     func0()
