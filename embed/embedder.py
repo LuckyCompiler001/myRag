@@ -18,13 +18,13 @@ import openai
 # === Typing (optional but useful) ===
 from typing import List, Dict, Tuple, Optional
 
-from config import client, LLM_MODEL
+from config import client, EMBEDDING_MODEL
 
-def generate_answer(prompt: str) -> str:
-    response = client.chat.completions.create(
-        model=LLM_MODEL,
-        messages=[
-            {"role": "user", "content": prompt}
-        ]
+def get_embedding(text: str) -> list[float]:
+    if not text.strip():
+        return []
+    response = client.embeddings.create(
+        model=EMBEDDING_MODEL,
+        input=text
     )
-    return response.choices[0].message.content.strip()
+    return response.data[0].embedding
