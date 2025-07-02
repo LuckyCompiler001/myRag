@@ -31,9 +31,9 @@ import logging
 from ingest.loader import load_documents_from_folder
 from ingest.chunker import chunk_documents
 from embed.embedder import get_embedding
-from embed.vector_store import create_faiss_index, save_index, save_chunk_metadata
-from retrieval.retriever import retrieve_relevant_chunks
-from generation.llm_generator import generate_answer
+from embed.vector import create_faiss_index, save_index, save_chunk_metadata
+from retrieval.retriver import retrieve_relevant_chunks
+from llm_generation.llm_generator import generate_answer
 
 # === Logging Setup ===
 log_dir = './output'
