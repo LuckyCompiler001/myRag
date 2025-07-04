@@ -1,16 +1,23 @@
-# pip install faiss-cpu # in case you don't have it installed
+# embed/vector_store.py
+
+# pip install faiss-cpu
 import faiss
 import numpy as np
 import os
 import pickle
 from typing import List, Tuple
 
-VECTOR_DIM = None  # for OpenAI `text-embedding-3-small`; change needed
 INDEX_PATH = "outputs/cache/faiss.index"
 META_PATH = "outputs/cache/chunk_meta.pkl"  # stores the original text chunks
 
 def create_faiss_index(embeddings: List[List[float]]) -> faiss.IndexFlatL2:
-    index = faiss.IndexFlatL2(VECTOR_DIM)
+    if not embeddings:
+        raise ValueError("No embeddings provided. Check document content.")
+
+    vector_dim = len(embeddings[0])
+    print(f"[Vector Store] Creating index with dimension: {vector_dim}")
+
+    index = faiss.IndexFlatL2(vector_dim)
     index.add(np.array(embeddings).astype("float32"))
     return index
 
@@ -31,6 +38,7 @@ def load_chunk_metadata() -> List[str]:
 def search_index(query_vector: List[float], top_k: int = 5) -> List[Tuple[str, float]]:
     index = load_index()
     chunks = load_chunk_metadata()
+
     query = np.array([query_vector]).astype("float32")
     distances, indices = index.search(query, top_k)
 

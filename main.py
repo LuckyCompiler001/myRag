@@ -94,8 +94,23 @@ Question:
     print("\nAnswer:")
     print(answer)
 
+def ensure_output_dir():
+    REQUIRED_DIRS = [
+    "data/raw",          # where you drop source files
+    "data/processed",    # optional if you want to store processed chunks
+    "outputs",           # top-level output
+    "outputs/cache",     # FAISS index + metadata
+    "outputs/logs"       # optional for logs (if used separately)
+    ]
+
+    for path in REQUIRED_DIRS:
+        if not os.path.exists(path):
+            os.makedirs(path)
+
+
 if __name__ == "__main__":
     func0()  # Call the test function
+    ensure_output_dir()
     mode = input("Choose mode [build/query]: ").strip().lower()
 
     if mode == "build":
