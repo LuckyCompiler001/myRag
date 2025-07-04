@@ -1,3 +1,5 @@
+# embed/embedder.py
+
 # === Core ===
 import os
 import sys
@@ -12,10 +14,7 @@ import json
 from tqdm import tqdm
 import tiktoken
 
-# === OpenAI Client ===
-import openai
-
-# === Typing (optional but useful) ===
+# === Typing ===
 from typing import List, Dict, Tuple, Optional
 
 from config import client, EMBEDDING_MODEL

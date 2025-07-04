@@ -1,0 +1,2 @@
+RAG system started. Logging initialized. - main.py - funcname: <module> - 2025-07-04 15:54:00,917 - INFO
+This will be saved in the log file. And this is a test log message to track our work. hello from main.py. you will be able to see time, level, message and file and function name - main.py - funcname: func0 - 2025-07-04 15:54:00,918 - INFO
