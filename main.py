@@ -69,18 +69,46 @@ def query_rag(query: str):
     print("\nAnswer:")
     print(answer)
 
+import os
+
 def ensure_output_dir():
-    REQUIRED_DIRS = [
-    "data/raw",          # where you drop source files
-    "data/processed",    # optional if you want to store processed chunks
-    "outputs",           # top-level output
-    "outputs/cache",     # FAISS index + metadata
-    "outputs/logs"       # optional for logs (if used separately)
+    base_dirs = {
+        "data": ["raw", "processed"],
+        "outputs": ["cache", "logs"]
+    }
+
+    for base, subdirs in base_dirs.items():
+        for sub in subdirs:
+            path = os.path.join(base, sub)
+            if not os.path.exists(path):
+                os.makedirs(path)
+
+    # Also ensure the top-level 'outputs' directory itself exists
+    if not os.path.exists("outputs"):
+        os.makedirs("outputs")
+
+import shutil
+
+def clean_processed_and_cache():
+    target_dirs = [
+        os.path.join("data", "processed"),
+        os.path.join("outputs", "cache")
     ]
 
-    for path in REQUIRED_DIRS:
-        if not os.path.exists(path):
-            os.makedirs(path)
+    for dir_path in target_dirs:
+        if os.path.exists(dir_path):
+            for filename in os.listdir(dir_path):
+                file_path = os.path.join(dir_path, filename)
+                try:
+                    if os.path.isfile(file_path) or os.path.islink(file_path):
+                        os.remove(file_path)
+                        logging.info(f"Deleted file: {file_path}")
+                    elif os.path.isdir(file_path):
+                        shutil.rmtree(file_path)
+                        logging.info(f"Deleted directory: {file_path}")
+                except Exception as e:
+                    logging.warning(f"Failed to delete {file_path}. Reason: {e}")
+
 
 
 if __name__ == "__main__":
@@ -88,10 +116,26 @@ if __name__ == "__main__":
     mode = input("Choose mode [build/query]: ").strip().lower()
 
     if mode == "build":
-        build_index("data/raw")
+        build_index(os.path.join("data", "raw"))
     elif mode == "query":
-        query = input("Enter your question: ")
-        query_rag(query)
+        while True:
+            flag = input("you wish to quit [Y/N]: ").strip().lower()
+            if flag == 'y':
+                logging.info("Exiting query mode.")
+                print("Exiting query mode.")
+                clean = input("Do you want to clean processed and cache directories? [Y/N]: ").strip().lower()
+                if clean == 'y':
+                    clean_processed_and_cache()
+                    logging.info("Processed and cache directories cleaned.")
+                    print("Processed and cache directories cleaned.")
+                break
+            elif flag != 'n':
+                logging.warning("Invalid input. Please enter 'Y' or 'N'.")
+                print("Invalid input. Please enter 'Y' or 'N'.")
+                continue
+            query = input("Enter your question: ")
+            query_rag(query)
+            logging.info(f"User query: {query}")
     else:
         logging.warning("Invalid mode selected. Use 'build' or 'query'.")
         print("Unknown mode. Use 'build' or 'query'.")
