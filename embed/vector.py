@@ -10,6 +10,10 @@ from typing import List, Tuple
 INDEX_PATH = "outputs/cache/faiss.index"
 META_PATH = "outputs/cache/chunk_meta.pkl"  # stores the original text chunks
 
+def save_index(index: faiss.IndexFlatL2):
+    os.makedirs(os.path.dirname(INDEX_PATH), exist_ok=True)
+    faiss.write_index(index, INDEX_PATH)
+
 def create_faiss_index(embeddings: List[List[float]]) -> faiss.IndexFlatL2:
     if not embeddings:
         raise ValueError("No embeddings provided. Check document content.")

@@ -85,3 +85,16 @@ HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _cli
 Sending prompt to LLM... - main.py - funcname: query_rag - 2025-07-04 17:43:32,954 - INFO
 HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-04 17:43:33,691 - INFO
 Received answer from LLM. - main.py - funcname: query_rag - 2025-07-04 17:43:33,700 - INFO
+RAG system started. Logging initialized. - main.py - funcname: <module> - 2025-07-04 17:51:48,290 - INFO
+This will be saved in the log file. And this is a test log message to track our work. hello from main.py. you will be able to see time, level, message and file and function name - main.py - funcname: func0 - 2025-07-04 17:51:48,291 - INFO
+Retrieving relevant chunks for query: what is the source i gave you talk about - main.py - funcname: query_rag - 2025-07-04 17:52:03,779 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-04 17:52:04,596 - INFO
+Sending prompt to LLM... - main.py - funcname: query_rag - 2025-07-04 17:52:04,606 - INFO
+HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-04 17:52:08,340 - INFO
+Received answer from LLM. - main.py - funcname: query_rag - 2025-07-04 17:52:08,355 - INFO
+RAG system started. Logging initialized. - main.py - funcname: <module> - 2025-07-05 11:00:07,991 - INFO
+Retrieving relevant chunks for query: generalize the text you know. fill this sentence according to what you see from the source:Metropolitan France was settled during the Iron Age by Celtic tribes known as Gauls before Rome annexed the area in 51 BC, leading to a distinct Gallo-Roman culture. In the Early Middle Ages, the Franks formed the kingdom of Francia, which became the heartland of the what Empire.(only answer the what in one word)  - main.py - funcname: query_rag - 2025-07-05 11:03:08,785 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 11:03:09,898 - INFO
+Sending prompt to LLM... - main.py - funcname: query_rag - 2025-07-05 11:03:09,918 - INFO
+HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 11:03:11,936 - INFO
+Received answer from LLM. - main.py - funcname: query_rag - 2025-07-05 11:03:11,937 - INFO

@@ -1,31 +1,6 @@
 import sys
 import os   
 import logging
-
-def func0()->None:
-    # this is a test function
-    print("This is a test function in main.py")
-    # in the case you want to test the library. like loggging
-    log_dir = './output'
-    log_file_name = 'logfile.log'
-    log_path = os.path.join(log_dir, log_file_name)
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir)
-    if not os.path.exists(log_path):
-        with open(log_path, 'w') as f:
-            f.write('')  # Create empty file
-        
-    logging.basicConfig(filename ='./output/logfile.log', 
-                        level = logging.INFO,
-                        format ='%(message)s - %(filename)s - funcname: %(funcName)s - %(asctime)s - %(levelname)s')
-    logging.info("This will be saved in the log file. And this is a test log message to track our work. hello from main.py. you will be able to see time, level, message and file and function name")
-
-    # you can also test and expand this function as you like :)
-
-# main.py
-
-# main.py
-
 import os
 import logging
 from ingest.loader import load_documents_from_folder
@@ -81,12 +56,12 @@ def query_rag(query: str):
 
     prompt = f"""Use the context below to answer the question.
 
-Context:
-{context}
+            Context:
+            {context}
 
-Question:
-{query}
-"""
+            Question:
+            {query}
+            """
     logging.info("Sending prompt to LLM...")
     answer = generate_answer(prompt)
 
@@ -109,7 +84,6 @@ def ensure_output_dir():
 
 
 if __name__ == "__main__":
-    func0()  # Call the test function
     ensure_output_dir()
     mode = input("Choose mode [build/query]: ").strip().lower()
 
