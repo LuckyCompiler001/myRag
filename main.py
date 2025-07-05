@@ -10,25 +10,9 @@ from embed.vector import create_faiss_index, save_index, save_chunk_metadata
 from retrieval.retriver import retrieve_relevant_chunks
 from llm_generation.llm_generator import generate_answer
 
-# === Logging Setup ===
-log_dir = './output'
-log_file_name = 'logfile.log'
-log_path = os.path.join(log_dir, log_file_name)
 
-if not os.path.exists(log_dir):
-    os.makedirs(log_dir)
 
-if not os.path.exists(log_path):
-    with open(log_path, 'w') as f:
-        f.write('')
 
-logging.basicConfig(
-    filename=log_path,
-    level=logging.INFO,
-    format='%(message)s - %(filename)s - funcname: %(funcName)s - %(asctime)s - %(levelname)s'
-)
-
-logging.info("RAG system started. Logging initialized.")
 
 def build_index(doc_folder: str):
     logging.info("Loading documents...")
@@ -71,7 +55,7 @@ def query_rag(query: str):
 
 import os
 
-def ensure_output_dir():
+def initializer():
     base_dirs = {
         "data": ["raw", "processed"],
         "outputs": ["cache", "logs"]
@@ -86,6 +70,24 @@ def ensure_output_dir():
     # Also ensure the top-level 'outputs' directory itself exists
     if not os.path.exists("outputs"):
         os.makedirs("outputs")
+    
+        # === Logging Setup ===
+    log_dir = os.path.join("outputs", "logs")
+    log_file_name = 'logfile.log'
+    log_path = os.path.join(log_dir, log_file_name)
+
+
+    if not os.path.exists(log_path):
+        with open(log_path, 'w') as f:
+            f.write('')
+    
+    logging.basicConfig(
+            filename=log_path,
+            level=logging.INFO,
+            format='%(message)s - %(filename)s - funcname: %(funcName)s - %(asctime)s - %(levelname)s'
+        )
+
+    logging.info("RAG system started. Logging initialized.")
 
 import shutil
 
@@ -112,11 +114,13 @@ def clean_processed_and_cache():
 
 
 if __name__ == "__main__":
-    ensure_output_dir()
+    initializer()
     mode = input("Choose mode [build/query]: ").strip().lower()
 
     if mode == "build":
         build_index(os.path.join("data", "raw"))
+        print("Index building complete. You can now query the system.")
+        logging.info("Index building complete. You can now query the system.")
     elif mode == "query":
         while True:
             flag = input("you wish to quit [Y/N]: ").strip().lower()

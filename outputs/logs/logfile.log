@@ -1,0 +1,24 @@
+RAG system started. Logging initialized. - main.py - funcname: initializer - 2025-07-05 12:01:26,875 - INFO
+Exiting query mode. - main.py - funcname: <module> - 2025-07-05 12:01:31,088 - INFO
+RAG system started. Logging initialized. - main.py - funcname: initializer - 2025-07-05 12:07:53,554 - INFO
+Loading documents... - main.py - funcname: build_index - 2025-07-05 12:07:57,006 - INFO
+Chunking documents... - main.py - funcname: build_index - 2025-07-05 12:07:57,008 - INFO
+Embedding 15 chunks... - main.py - funcname: build_index - 2025-07-05 12:07:57,008 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:07:58,209 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:07:58,834 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:07:59,480 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:00,714 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:01,527 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:02,355 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:03,211 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:03,640 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:04,467 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:05,195 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:05,599 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:06,329 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:06,779 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:07,708 - INFO
+HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK" - _client.py - funcname: _send_single_request - 2025-07-05 12:08:08,359 - INFO
+Creating FAISS index... - main.py - funcname: build_index - 2025-07-05 12:08:08,362 - INFO
+Saving index and metadata... - main.py - funcname: build_index - 2025-07-05 12:08:08,364 - INFO
+Index building complete. - main.py - funcname: build_index - 2025-07-05 12:08:08,367 - INFO
